@@ -1,0 +1,13 @@
+Ahorcapy
+Juego basado en el juego del Ahorcado
+(c) 2011 Alfonso Saavedra "Son Link"
+Bajo liencia GPLv3
+
+Ahorcapy es mi versión del juego del Ahorcado.
+Es un pequeño proyecto que empeze por aburrimiento en mis ratos libres.
+El juego se juega desde una terminal.
+Espero que os guste como a mi programarlo ^^
+
+Requisitos:
+Python 2.7
+termcolor 1.1.0 -> http://pypi.python.org/pypi/termcolor
