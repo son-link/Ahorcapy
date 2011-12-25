@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 #
 #  ahorcapy.py
@@ -28,7 +28,6 @@
 from os import system
 from re import search, UNICODE
 from random import randint
-from termcolor import colored
 
 class Ahorcapy():
 	
@@ -130,9 +129,9 @@ class Ahorcapy():
 				self.interface[5] = '\t|    / \\'
 				self.interface[7] = '\tPalabra: %s\n' % self.word2
 				for line in self.interface:
-					print colored(line, 'red', attrs=['bold'])
+					print ('\x1b[1;31m'+line)
 					
-				print colored('\t¡HAS FALLADO!', 'red', attrs=['bold', 'blink'])
+				print ('\t¡HAS FALLADO!\x1b[0m')
 				self.retry()
 				
 			self.interface[7] = '\tPalabra: %s\n' % self.word2
@@ -143,7 +142,7 @@ class Ahorcapy():
 			self.interface[8] = '\tLetras introducidas hasta el momento:%s\n' % letters
 			
 			for line in self.interface:
-				print colored(line, 'white', attrs=['bold'])
+				print ('\x1b[1m'+line+'\x1b[0m')
 			
 			key = raw_input('\tEscriba una letra: ')
 			
@@ -152,9 +151,9 @@ class Ahorcapy():
 		else:
 			self.interface[7] = '\tPalabra: %s\n' % self.word2			
 			for line in self.interface:
-				print colored(line, 'white', attrs=['bold'])
+				print ('\x1b[1;32m'+line)
 			
-			print colored('\t¡HAS GANADO!', 'green', attrs=['bold','blink'])
+			print ('\t¡HAS GANADO!\x1b[0m')
 			
 			self.retry()
 			

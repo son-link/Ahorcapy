@@ -9,5 +9,4 @@ El juego se juega desde una terminal.
 Espero que os guste como a mi programarlo ^^
 
 Requisitos:
-Python 2.7
-termcolor 1.1.0 -> http://pypi.python.org/pypi/termcolor
+Python 2.7 o 3.2

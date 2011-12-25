@@ -1,0 +1,5 @@
+r001:
+	* Primera relesase del juego
+	
+r002:
+	* Ya no es necesaria el modulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes
