@@ -1,6 +1,6 @@
 Ahorcapy
 Juego basado en el juego del Ahorcado
-(c) 2011 Alfonso Saavedra "Son Link"
+(c) 2011-2012 Alfonso Saavedra "Son Link"
 Bajo liencia GPLv3
 
 Ahorcapy es mi versión del juego del Ahorcado.
@@ -10,3 +10,6 @@ Espero que os guste como a mi programarlo ^^
 
 Requisitos:
 Python 2.7 o 3.2
+python-curses
+
+Nota: No es posible usar de momento caracteres especiales en el programa como la ñ y acentos.

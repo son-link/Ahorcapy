@@ -3,3 +3,6 @@ r001:
 	
 r002:
 	* Ya no es necesaria el modulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes
+
+r003:
+	* Ahora se usura Curses para mostrar una interfaz de juego mas clara.
