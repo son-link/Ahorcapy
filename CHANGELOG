@@ -1,8 +1,12 @@
-r001:
+r1:
 	* Primera relesase del juego
 	
-r002:
+r2:
 	* Ya no es necesaria el modulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes
 
-r003:
+r3 (stable):
 	* Ahora se usura Curses para mostrar una interfaz de juego mas clara.
+	
+r4 (stable):
+	* Solucionado un fallo a la hora de comprobar que tecla se pulso
+	* Convierte las mayúsculas en minúscula

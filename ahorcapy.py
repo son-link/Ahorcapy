@@ -86,8 +86,10 @@ class Ahorcapy():
 		"""
 		Comprueba si la letra esta en la palabra.
 		"""
-		key = chr(stdscr.getch())
-		if search('[A-Za-z]$', key):
+		key = chr(stdscr.getch()).lower()
+		#key.encode(code)
+
+		if search('[a-z]$', key):
 			if not key in self.letters:
 				self.letters.append(key)
 				self.letters.sort()
@@ -175,7 +177,7 @@ class Ahorcapy():
 		"""
 		Al terminar la partida nos preguntara si queremos volver a jugar
 		"""
-		stdscr.addstr(16, 4, 'Desea jugar otra vez [S/n]')
+		stdscr.addstr(16, 4, 'Desea jugar otra vez niño [S/n]')
 		key = chr(stdscr.getch())
 		
 		if key == 's' or key == 'S':
