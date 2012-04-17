@@ -10,3 +10,7 @@ r3 (stable):
 r4 (stable):
 	* Solucionado un fallo a la hora de comprobar que tecla se pulso
 	* Convierte las mayúsculas en minúscula
+
+r5:
+	* Terminado de solucionar el fallo a la hora de comprobar que tecla se pulso
+	* Otros cambios menores

@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r3
+#  Ahorcapy r5
 #  
-#  Copyright 2012 Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 #  
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -26,9 +25,16 @@
 # (c) 2011-2012 Alfonso Saavedra "Son Link"
 # http://sonlinkblog.blogspot.com
 
-from re import search
+import curses, curses.panel, gettext
+
 from random import randint
-import curses
+from optparse import OptionParser
+
+APP = 'ahorcapy'
+gettext.textdomain (APP)
+gettext.bindtextdomain (APP, 'lang')
+_ = gettext.gettext
+gettext.install(APP, 'lang')
 
 # Iniciamos Curses
 stdscr = curses.initscr()
@@ -70,14 +76,18 @@ class Ahorcapy():
 			self.word2 += '_'
 			i += 1
 		
-		stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
+		stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
 		stdscr.addstr(3, 4, '_______')
 		stdscr.addstr(4, 4, '/     |')
 		stdscr.addstr(5, 4, '|')
 		stdscr.addstr(6, 4, '|')
 		stdscr.addstr(7, 4, '|')
 		stdscr.addstr(8, 4, '|')
-		stdscr.addstr(10, 4, 'Palabra: %s' % self.word2)
+		stdscr.addstr(10, 4, _('Word: %s') % self.word2)
+		
+		panel = self.show_letters()
+		panel.show()
+		curses.panel.update_panels()
 		stdscr.refresh()
 		
 		self.checkLetter()
@@ -86,10 +96,11 @@ class Ahorcapy():
 		"""
 		Comprueba si la letra esta en la palabra.
 		"""
-		key = chr(stdscr.getch()).lower()
-		#key.encode(code)
+		k = stdscr.getch()
+		
+		if k >= 97 and k <= 122 or k >= 65 and k <= 90:
+			key = chr(k).lower()
 
-		if search('[a-z]$', key):
 			if not key in self.letters:
 				self.letters.append(key)
 				self.letters.sort()
@@ -124,9 +135,11 @@ class Ahorcapy():
 			
 			self.redraw()
 		
-		elif key == 27:
+		elif k == 27:
 			# Si se pulsa la tecla Esc se cierra el juego
 			self.salir()
+		else:
+			self.redraw()
 
 	def redraw(self):
 		"""
@@ -153,23 +166,23 @@ class Ahorcapy():
 				
 			if self.errors == 6:
 				stdscr.addstr(7, 4, '|    / \\')
-				stdscr.addstr(10, 4, 'Palabra: %s' % self.word2)
+				stdscr.addstr(10, 4, _('Word: %s') % self.word2)
 					
-				stdscr.addstr(12, 4, '¡Has fallado!', curses.color_pair(1) )
+				stdscr.addstr(12, 4, _('YOU FAIL!'), curses.color_pair(1) )
 				self.retry()
 				
-			stdscr.addstr(10, 4, 'Palabra: %s' % self.word2)
+			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
 			
 			for k in self.letters:
 				letters += ' ' + k
-				
-			stdscr.addstr(14, 4, 'Letras introducidas hasta el momento:%s' % letters)
-			stdscr.refresh()
+			
+			panel = self.show_letters()
+			panel.show()
 			self.checkLetter()
 		
 		else:
-			stdscr.addstr(10, 4, 'Palabra: %s' % self.word2)
-			stdscr.addstr(12, 4, '¡Has ganado!', curses.color_pair(2) )
+			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
+			stdscr.addstr(12, 4, _('YOU WIN!'), curses.color_pair(2) )
 			
 			self.retry()
 	
@@ -177,14 +190,15 @@ class Ahorcapy():
 		"""
 		Al terminar la partida nos preguntara si queremos volver a jugar
 		"""
-		stdscr.addstr(16, 4, 'Desea jugar otra vez niño [S/n]')
-		key = chr(stdscr.getch())
+		stdscr.addstr(16, 4, _('Play again? [Y/n]'))
+		key = chr(stdscr.getch()).lower()
 		
-		if key == 's' or key == 'S':
+		if key == 's' or key == 'y':
 			self.positions = []
 			self.letters = []
 			self.errors = 0
 			stdscr.clear()
+			self.show_letters(True)
 			
 			f = open('words.txt', 'r')
 			words = f.readlines()
@@ -200,20 +214,41 @@ class Ahorcapy():
 				self.word2 += '_'
 				i += 1
 			
-			stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
+			stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
 			stdscr.addstr(3, 4, '_______')
 			stdscr.addstr(4, 4, '/     |')
 			stdscr.addstr(5, 4, '|')
 			stdscr.addstr(6, 4, '|')
 			stdscr.addstr(7, 4, '|')
 			stdscr.addstr(8, 4, '|')
-			stdscr.addstr(10, 4, 'Palabra: %s' % self.word2)
+			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
 			stdscr.refresh()			
 			self.redraw()
 			
-		elif key == 'n' or key == 'N':
+		elif key == 'n':
 			self.salir()
+		else:
+			self.retry()
 			
+	def show_letters(self, clear=False):
+		letters = ''
+		win = curses.newwin(4, curses.COLS, 14, 0)
+		if clear:
+			win.clear()
+			
+		win.box()
+		
+		win.addstr(0, 2, _('Letters entered so far:'))
+		for l in self.letters:
+				letters += ' ' + l
+		
+		win.addstr(1, 1, letters)
+		win.bkgdset(ord(' '), curses.color_pair(0))
+		win.refresh()
+		
+		pan = curses.panel.new_panel(win)
+		return pan
+		
 	def salir(self):
 		"""
 		Salimos del programa
@@ -222,4 +257,8 @@ class Ahorcapy():
 		exit()
 			
 if __name__ == '__main__':
-	Ahorcapy()
+	try:
+		Ahorcapy()
+	except KeyboardInterrupt:
+		curses.endwin()
+		exit()
