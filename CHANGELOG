@@ -14,3 +14,6 @@ r4 (stable):
 r5:
 	* Terminado de solucionar el fallo a la hora de comprobar que tecla se pulso
 	* Otros cambios menores
+
+r6:
+	* Solucionado un fallo en el instalador

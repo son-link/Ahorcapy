@@ -1,7 +1,7 @@
 echo 'Installing Ahorcapy'
 
 install -m755 ahorcapy.py /usr/bin/ahorcapy
-mkdir -p /usr/share/cdtray
+mkdir -p /usr/share/ahorcapy
 install -m644 COPYING /usr/share/ahorcapy
 install -m644 words.txt /usr/share/ahorcapy
 
