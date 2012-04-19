@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r7
+#  Ahorcapy r8
 #  
 #  
 #  This program is free software; you can redistribute it and/or modify
@@ -188,7 +188,7 @@ class Ahorcapy():
 		stdscr.addstr(16, 4, _('Play again? [Y/n]'))
 		key = stdscr.getch()
 		
-		if key == 89 or key == 121:
+		if key == 89 or key == 121 or key == 83 or key == 115:
 			self.positions = []
 			self.letters = []
 			self.errors = 0
