@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r5
+#  Ahorcapy r7
 #  
 #  
 #  This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,7 @@ curses.cbreak()
 
 # Configuramos e iniciamos la ventana del juego
 begin_x = 1 ; begin_y = 1
-height = 20 ; width = 40
+height = 20 ; width = 20
 win = curses.newwin(height, width, begin_y, begin_x)
 
 class Ahorcapy():
@@ -77,7 +77,7 @@ class Ahorcapy():
 			i += 1
 		
 		stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
-		stdscr.addstr(3, 4, '_______')
+		stdscr.addstr(3, 4, ' ______')
 		stdscr.addstr(4, 4, '/     |')
 		stdscr.addstr(5, 4, '|')
 		stdscr.addstr(6, 4, '|')
@@ -100,7 +100,6 @@ class Ahorcapy():
 		
 		if k >= 97 and k <= 122 or k >= 65 and k <= 90:
 			key = chr(k).lower()
-
 			if not key in self.letters:
 				self.letters.append(key)
 				self.letters.sort()
@@ -128,10 +127,6 @@ class Ahorcapy():
 					i += 1
 					
 				self.word2 = word2
-							
-			else:
-				curses.beep()
-				self.errors += 1
 			
 			self.redraw()
 		
@@ -191,9 +186,9 @@ class Ahorcapy():
 		Al terminar la partida nos preguntara si queremos volver a jugar
 		"""
 		stdscr.addstr(16, 4, _('Play again? [Y/n]'))
-		key = chr(stdscr.getch()).lower()
+		key = stdscr.getch()
 		
-		if key == 's' or key == 'y':
+		if key == 89 or key == 121:
 			self.positions = []
 			self.letters = []
 			self.errors = 0
@@ -215,17 +210,17 @@ class Ahorcapy():
 				i += 1
 			
 			stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
-			stdscr.addstr(3, 4, '_______')
+			stdscr.addstr(3, 4, ' ______')
 			stdscr.addstr(4, 4, '/     |')
 			stdscr.addstr(5, 4, '|')
 			stdscr.addstr(6, 4, '|')
 			stdscr.addstr(7, 4, '|')
 			stdscr.addstr(8, 4, '|')
-			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
-			stdscr.refresh()			
+			stdscr.addstr(10, 4, _('Word: %s') % self.word2)			
 			self.redraw()
 			
-		elif key == 'n':
+			
+		elif key == 78 or key == 110:
 			self.salir()
 		else:
 			self.retry()

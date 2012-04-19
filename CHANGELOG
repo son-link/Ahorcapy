@@ -17,3 +17,7 @@ r5:
 
 r6:
 	* Solucionado un fallo en el instalador
+
+r7:
+	* Solucionado un fallo al redimensionar la terminal cuando pregunta si se desea volver a jugar
+	* Si una tecla ya se pulso si se vuelve a pulsar no lo contara como error
