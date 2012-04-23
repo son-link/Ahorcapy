@@ -222,7 +222,6 @@ class Ahorcapy():
 				stdscr.addstr(6, 4, '|')
 				stdscr.addstr(9, 4, 'Palabra: ______')
 				
-				stdscr.addstr(12, 4, 'Pulsa una tecla para iniciar una nueva partida')
 				panel = self.show_letters()
 				panel.show()
 				self.redraw()
