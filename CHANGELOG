@@ -24,3 +24,8 @@ r7:
 
 r8:
 	* Ahora al preguntar si se quiere volver a jugar se puede tambien pulsar la tecla S
+
+r9:
+	* Se ha modificado la interfaz para aprobechar algo mas el ancho de la terminal
+	* Ahora al terminar una partida se puede pulsar cualquier tecla para empezar una nuev partida o pulsar la tecla Esc para salir del juego.
+	* Ahora al fallar te muestra la palabra que era.

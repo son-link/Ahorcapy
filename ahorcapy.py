@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r8
+#  Ahorcapy r9
 #  
 #  
 #  This program is free software; you can redistribute it and/or modify
@@ -29,6 +29,9 @@ import curses, curses.panel, gettext
 
 from random import randint
 from optparse import OptionParser
+#from os.path import isfile, isdir
+from os import environ
+from os import access, path, R_OK
 
 APP = 'ahorcapy'
 gettext.textdomain (APP)
@@ -76,14 +79,14 @@ class Ahorcapy():
 			self.word2 += '_'
 			i += 1
 		
-		stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
-		stdscr.addstr(3, 4, ' ______')
-		stdscr.addstr(4, 4, '/     |')
+		stdscr.addstr(1, 4, ' ______')
+		stdscr.addstr(2, 4, '/     |')
+		stdscr.addstr(3, 4, '|')
+		stdscr.addstr(4, 4, '|')
 		stdscr.addstr(5, 4, '|')
 		stdscr.addstr(6, 4, '|')
-		stdscr.addstr(7, 4, '|')
-		stdscr.addstr(8, 4, '|')
-		stdscr.addstr(10, 4, _('Word: %s') % self.word2)
+		stdscr.addstr(9, 4, 'Palabra: %s' % self.word2)
+
 		
 		panel = self.show_letters()
 		panel.show()
@@ -145,28 +148,28 @@ class Ahorcapy():
 		if self.word2 != self.word:
 			
 			if self.errors == 1:
-				stdscr.addstr(5, 4, '|     O')
+				stdscr.addstr(3, 10, 'O')
 			
 			if self.errors == 2:
-				stdscr.addstr(6, 4, '|     |')
+				stdscr.addstr(4, 10, '|')
 				
 			if self.errors == 3:
-				stdscr.addstr(6, 4, '|    /|')
+				stdscr.addstr(4, 9, '/|')
 				
 			if self.errors == 4:
-				stdscr.addstr(6, 4, '|    /|\\')
+				stdscr.addstr(4, 9, '/|\\')
 				
 			if self.errors == 5:
-				stdscr.addstr(7, 4, '|    /')
+				stdscr.addstr(5, 9, '/')
 				
 			if self.errors == 6:
-				stdscr.addstr(7, 4, '|    / \\')
-				stdscr.addstr(10, 4, _('Word: %s') % self.word2)
+				stdscr.addstr(5, 9, '/ \\')
+				stdscr.addstr(9, 4, _('Word: %s') % self.word)
 					
-				stdscr.addstr(12, 4, _('YOU FAIL!'), curses.color_pair(1) )
+				stdscr.addstr(11, 4, _('YOU FAIL!'), curses.color_pair(1) )
 				self.retry()
 				
-			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
+			stdscr.addstr(9, 4, _('Word: %s') % self.word2)
 			
 			for k in self.letters:
 				letters += ' ' + k
@@ -176,68 +179,69 @@ class Ahorcapy():
 			self.checkLetter()
 		
 		else:
-			stdscr.addstr(10, 4, _('Word: %s') % self.word2)
-			stdscr.addstr(12, 4, _('YOU WIN!'), curses.color_pair(2) )
-			
+			stdscr.addstr(9, 4, _('Word: %s') % self.word2)
+			stdscr.addstr(11, 4, _('YOU WIN!'), curses.color_pair(2) )
 			self.retry()
 	
 	def retry(self):
 		"""
 		Al terminar la partida nos preguntara si queremos volver a jugar
 		"""
-		stdscr.addstr(16, 4, _('Play again? [Y/n]'))
+		stdscr.addstr(16, 4, _('Press any key to start new game or press ESC to exit'))
 		key = stdscr.getch()
 		
-		if key == 89 or key == 121 or key == 83 or key == 115:
-			self.positions = []
-			self.letters = []
-			self.errors = 0
-			stdscr.clear()
-			self.show_letters(True)
-			
-			f = open('words.txt', 'r')
-			words = f.readlines()
-			f.close()
-			
-			n = randint(0, len(words)-1)
-			self.word = words[n].split()[0]
-			
-			self.word2 = ''
-			
-			i = 1
-			while i <= len(self.word):
-				self.word2 += '_'
-				i += 1
-			
-			stdscr.addstr(1, 4, 'Ahorcapy. (c) 2011-2012 Alfonso Saavedra "Son Link"' , curses.color_pair(3) )
-			stdscr.addstr(3, 4, ' ______')
-			stdscr.addstr(4, 4, '/     |')
-			stdscr.addstr(5, 4, '|')
-			stdscr.addstr(6, 4, '|')
-			stdscr.addstr(7, 4, '|')
-			stdscr.addstr(8, 4, '|')
-			stdscr.addstr(10, 4, _('Word: %s') % self.word2)			
-			self.redraw()
-			
-			
-		elif key == 78 or key == 110:
-			self.salir()
+		if key < 256:
+			if key == 27:
+				self.salir()
+			else:
+				self.positions = []
+				self.letters = []
+				self.errors = 0
+				stdscr.clear()
+				self.show_letters(True)
+				
+				f = open('words.txt', 'r')
+				words = f.readlines()
+				f.close()
+				
+				n = randint(0, len(words)-1)
+				self.word = words[n].split()[0]
+				
+				self.word2 = ''
+				
+				i = 1
+				while i <= len(self.word):
+					self.word2 += '_'
+					i += 1
+				
+				stdscr.addstr(1, 4, ' ______')
+				stdscr.addstr(2, 4, '/     |')
+				stdscr.addstr(3, 4, '|')
+				stdscr.addstr(4, 4, '|')
+				stdscr.addstr(5, 4, '|')
+				stdscr.addstr(6, 4, '|')
+				stdscr.addstr(9, 4, 'Palabra: ______')
+				
+				stdscr.addstr(12, 4, 'Pulsa una tecla para iniciar una nueva partida')
+				panel = self.show_letters()
+				panel.show()
+				self.redraw()
 		else:
 			self.retry()
 			
 	def show_letters(self, clear=False):
 		letters = ''
-		win = curses.newwin(4, curses.COLS, 14, 0)
+		win = curses.newwin(6, 14, 1, 20)
+
 		if clear:
 			win.clear()
 			
-		win.box()
 		
-		win.addstr(0, 2, _('Letters entered so far:'))
+		win.addstr(0, 0, _('Letters:'))
 		for l in self.letters:
-				letters += ' ' + l
+				letters += l + ' '
 		
-		win.addstr(1, 1, letters)
+		win.addstr(1, 0, letters)
 		win.bkgdset(ord(' '), curses.color_pair(0))
 		win.refresh()
 		
