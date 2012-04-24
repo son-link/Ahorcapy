@@ -1,31 +1,34 @@
 r1:
-	* Primera relesase del juego
+	* Primera release del juego.
 	
 r2:
-	* Ya no es necesaria el modulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes
+	* Ya no es necesario el módulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes.
 
 r3 (stable):
-	* Ahora se usura Curses para mostrar una interfaz de juego mas clara.
+	* Ahora se usará Curses para mostrar una interfaz de juego más clara.
 	
 r4 (stable):
-	* Solucionado un fallo a la hora de comprobar que tecla se pulso
-	* Convierte las mayúsculas en minúscula
+	* Solucionado un fallo a la hora de comprobar qué tecla se pulsó.
+	* Convierte las mayúsculas en minúscula.
 
 r5:
-	* Terminado de solucionar el fallo a la hora de comprobar que tecla se pulso
-	* Otros cambios menores
+	* Terminado de solucionar el fallo a la hora de comprobar qué tecla se pulsó.
+	* Otros cambios menores.
 
 r6:
-	* Solucionado un fallo en el instalador
+	* Solucionado un fallo en el instalador.
 
 r7:
-	* Solucionado un fallo al redimensionar la terminal cuando pregunta si se desea volver a jugar
-	* Si una tecla ya se pulso si se vuelve a pulsar no lo contara como error
+	* Solucionado un fallo al redimensionar la terminal cuando pregunta si se desea volver a jugar.
+	* Si una tecla ya se pulsó, si se vuelve a pulsar no lo contará como errónea.
 
 r8:
-	* Ahora al preguntar si se quiere volver a jugar se puede tambien pulsar la tecla S
+	* Ahora al preguntar si se quiere volver a jugar se puede pulsar también la tecla S.
 
 r9:
-	* Se ha modificado la interfaz para aprobechar algo mas el ancho de la terminal
-	* Ahora al terminar una partida se puede pulsar cualquier tecla para empezar una nuev partida o pulsar la tecla Esc para salir del juego.
+	* Se ha modificado la interfaz para aprovechar algo más el ancho de la terminal.
+	* Ahora al terminar una partida, se puede pulsar cualquier tecla para empezar una nueva partida o pulsar la tecla Esc para salir del juego.
 	* Ahora al fallar te muestra la palabra que era.
+
+r10 (1.0 RC1):
+	* Lanzamiento de la primera release candidate del juego

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r9
+#  Ahorcapy r10 (1.0 RC1)
 #  
 #  
 #  This program is free software; you can redistribute it and/or modify
@@ -42,6 +42,7 @@ gettext.install(APP, 'lang')
 # Iniciamos Curses
 stdscr = curses.initscr()
 curses.start_color()
+stdscr.keypad(1)
 # Definimos los pares de color que usaremos
 curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
 curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
@@ -187,7 +188,7 @@ class Ahorcapy():
 		"""
 		Al terminar la partida nos preguntara si queremos volver a jugar
 		"""
-		stdscr.addstr(16, 4, _('Press any key to start new game or press ESC to exit'))
+		stdscr.addstr(12, 4, _('Press any key to start new game or press ESC to exit'))
 		key = stdscr.getch()
 		
 		if key < 256:
