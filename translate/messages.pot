@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-17 15:52+0200\n"
+"POT-Creation-Date: 2012-05-01 13:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../ahorcapy.py:86 ../ahorcapy.py:169 ../ahorcapy.py:174 ../ahorcapy.py:184
-#: ../ahorcapy.py:224
+#: ../ahorcapy.py:75
+#, python-format
+msgid "The file %s don't exists or you not have read permissions"
+msgstr ""
+
+#: ../ahorcapy.py:177 ../ahorcapy.py:182 ../ahorcapy.py:192
 #, python-format
 msgid "Word: %s"
 msgstr ""
 
-#: ../ahorcapy.py:171
+#: ../ahorcapy.py:179
 msgid "YOU FAIL!"
 msgstr ""
 
-#: ../ahorcapy.py:185
+#: ../ahorcapy.py:193
 msgid "YOU WIN!"
 msgstr ""
 
-#: ../ahorcapy.py:193
-msgid "Play again? [Y/n]"
+#: ../ahorcapy.py:200
+msgid "Press any key to start new game or press ESC to exit"
 msgstr ""
 
-#: ../ahorcapy.py:241
-msgid "Letters entered so far:"
+#: ../ahorcapy.py:250
+msgid "Letters:"
 msgstr ""

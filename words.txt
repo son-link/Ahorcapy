@@ -1,7 +1,4 @@
 ahorcado
-murcielago
-madrid
-rinoceronte
 terminal
 nucleo
 navegador
@@ -16,7 +13,6 @@ debian
 kernel
 facebook
 twitter
-anonymous
 android
 google
 kde
@@ -26,7 +22,6 @@ centos
 desdelinux
 stallman
 torvalds
-linus
 mandriva
 mageia
 mandrake
@@ -42,3 +37,6 @@ pardus
 wikipedia
 archlinux
 gimp
+icewm
+google
+yahoo

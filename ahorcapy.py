@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Ahorcapy r10 (1.0 RC1)
+#  Ahorcapy r11 (0.9.1)
 #  
 #  
 #  This program is free software; you can redistribute it and/or modify
@@ -23,15 +23,15 @@
 
 # Versión del juego del ahorcado.
 # (c) 2011-2012 Alfonso Saavedra "Son Link"
-# http://sonlinkblog.blogspot.com
+# http://sonlinkblog.blogspot.com/p/ahorcapy.html
 
 import curses, curses.panel, gettext
 
 from random import randint
+from sys import argv
 from optparse import OptionParser
-#from os.path import isfile, isdir
-from os import environ
-from os import access, path, R_OK
+from os.path import isfile
+from os import access, R_OK
 
 APP = 'ahorcapy'
 gettext.textdomain (APP)
@@ -65,11 +65,20 @@ class Ahorcapy():
 		self.positions = []
 		self.letters = []
 		self.errors = 0
-		
-		f = open('words.txt', 'r')
+		self.wordslist = ''
+		if len(argv) == 2:
+			self.wordslist = argv[1]
+		else:
+			self.wordslist = 'words.txt'
+		if not isfile(self.wordslist) or not access(self.wordslist, R_OK):
+			curses.endwin()
+			print (_('The file %s don\'t exists or you not have read permissions') % self.wordslist)
+			exit(-1)
+			
+		f = open(self.wordslist, 'r')
 		words = f.readlines()
 		f.close()
-		
+			
 		n = randint(0, len(words)-1)
 		self.word = words[n].split()[0]
 		
@@ -77,7 +86,7 @@ class Ahorcapy():
 		
 		i = 1
 		while i <= len(self.word):
-			self.word2 += '_'
+			self.word2 += '*'
 			i += 1
 		
 		stdscr.addstr(1, 4, ' ______')
@@ -127,7 +136,7 @@ class Ahorcapy():
 					if i in self.positions:
 						word2 += self.word[i]
 					else:
-						word2 += '_'
+						word2 += '*'
 					i += 1
 					
 				self.word2 = word2
@@ -199,9 +208,10 @@ class Ahorcapy():
 				self.letters = []
 				self.errors = 0
 				stdscr.clear()
+				self.word2 = ''
 				self.show_letters(True)
 				
-				f = open('words.txt', 'r')
+				f = open(self.wordslist, 'r')
 				words = f.readlines()
 				f.close()
 				
@@ -210,9 +220,9 @@ class Ahorcapy():
 				
 				self.word2 = ''
 				
-				i = 1
+				i = 1	
 				while i <= len(self.word):
-					self.word2 += '_'
+					self.word2 += '*'
 					i += 1
 				
 				stdscr.addstr(1, 4, ' ______')
@@ -221,7 +231,7 @@ class Ahorcapy():
 				stdscr.addstr(4, 4, '|')
 				stdscr.addstr(5, 4, '|')
 				stdscr.addstr(6, 4, '|')
-				stdscr.addstr(9, 4, 'Palabra: ______')
+				stdscr.addstr(9, 4, 'Palabra: %s' % self.word2)
 				
 				panel = self.show_letters()
 				panel.show()

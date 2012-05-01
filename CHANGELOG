@@ -19,7 +19,7 @@ r6:
 	* Solucionado un fallo en el instalador.
 
 r7:
-	* Solucionado un fallo al redimensionar la terminal cuando pregunta si se desea volver a jugar.
+	* Solucionado un fallo al re dimensionar la terminal cuando pregunta si se desea volver a jugar.
 	* Si una tecla ya se pulsó, si se vuelve a pulsar no lo contará como errónea.
 
 r8:
@@ -30,5 +30,10 @@ r9:
 	* Ahora al terminar una partida, se puede pulsar cualquier tecla para empezar una nueva partida o pulsar la tecla Esc para salir del juego.
 	* Ahora al fallar te muestra la palabra que era.
 
-r10 (1.0 RC1):
+r10 (0.9.0):
 	* Lanzamiento de la primera release candidate del juego
+
+r11 (0.9.1):
+	* Se han cambiado los _ por * para ver mejor cuantas letras contiene.
+	* Ahora se puede usar usar un otro fichero con palabras pasándole como parámetro la ruta a ese archivo de texto
+	* Se han borrado algunas palabras y añadidas otras en la lista de palabras

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ahorcapy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-17 15:52+0200\n"
-"PO-Revision-Date: 2012-04-17 15:53+0100\n"
+"POT-Creation-Date: 2012-05-01 13:24+0200\n"
+"PO-Revision-Date: 2012-05-01 13:25+0100\n"
 "Last-Translator: Alfonso Saavedra \"Son Link\" <sonlink.dourden@gmail.com>\n"
 "Language-Team: principal\n"
 "Language: \n"
@@ -18,30 +18,39 @@ msgstr ""
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: Spain\n"
 
-#: ../ahorcapy.py:86
-#: ../ahorcapy.py:169
-#: ../ahorcapy.py:174
-#: ../ahorcapy.py:184
-#: ../ahorcapy.py:224
+#: ../ahorcapy.py:75
+#, python-format
+msgid "The file %s don't exists or you not have read permissions"
+msgstr "El fichero %s no existe o no tienes permisos de lectura"
+
+#: ../ahorcapy.py:177
+#: ../ahorcapy.py:182
+#: ../ahorcapy.py:192
 #, python-format
 msgid "Word: %s"
 msgstr "Palabra: %s"
 
-#: ../ahorcapy.py:171
+#: ../ahorcapy.py:179
 msgid "YOU FAIL!"
 msgstr "¡HAS FALLADO!"
 
-#: ../ahorcapy.py:185
+#: ../ahorcapy.py:193
 msgid "YOU WIN!"
 msgstr "¡HAS GANADO!"
 
-#: ../ahorcapy.py:193
-msgid "Play again? [Y/n]"
-msgstr "¿Jugar otra vez? [S/n]"
+#: ../ahorcapy.py:200
+msgid "Press any key to start new game or press ESC to exit"
+msgstr "Pulsa una tecla para empezar una nueva partida o Esc para salir"
 
-#: ../ahorcapy.py:241
-msgid "Letters entered so far:"
-msgstr "Letras introducidas hasta el momento:"
+#: ../ahorcapy.py:250
+msgid "Letters:"
+msgstr "Letras:"
+
+#~ msgid "Play again? [Y/n]"
+#~ msgstr "¿Jugar otra vez? [S/n]"
+
+#~ msgid "Letters entered so far:"
+#~ msgstr "Letras introducidas hasta el momento:"
 
 #~ msgid "Letras introducidas hasta el momento: %s"
 #~ msgstr "Letras introducidas hasta el momento: %s"
