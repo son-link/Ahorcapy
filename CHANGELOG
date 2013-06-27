@@ -1,12 +1,12 @@
 r1:
 	* Primera release del juego.
-	
+
 r2:
 	* Ya no es necesario el módulo termcolor, se usa directamente las sentencias de escape ANSI correspondientes.
 
 r3 (stable):
 	* Ahora se usará Curses para mostrar una interfaz de juego más clara.
-	
+
 r4 (stable):
 	* Solucionado un fallo a la hora de comprobar qué tecla se pulsó.
 	* Convierte las mayúsculas en minúscula.
@@ -37,3 +37,12 @@ r11 (0.9.1):
 	* Se han cambiado los _ por * para ver mejor cuantas letras contiene.
 	* Ahora se puede usar usar un otro fichero con palabras pasándole como parámetro la ruta a ese archivo de texto
 	* Se han borrado algunas palabras y añadidas otras en la lista de palabras
+
+r12 (0.9.2):
+	* Nueva interfaz. Se a sustituido Ncurses por Urwid.
+	* Gracias a Urwid ya es posible usar caracteres especiales como la ñ
+	* Se a simplificado y limpiado el código
+	* Ahora al cargar la lista de palabras ya la aleatoriza evitando así que se vuelva a mostrar una palabra que ya se acertó/fallo
+	* Ahora al iniciar el juego se muestra una lista de las listas de palabras disponibles en la carpeta lists si no se le pasa ningún archivo como parámetro. Si se instala irán en /usr/share/ahorcapy
+	* Actualización de la traducción
+	* Añadidas 2 nuevas listas
